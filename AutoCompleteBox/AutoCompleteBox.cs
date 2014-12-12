@@ -71,6 +71,9 @@ namespace AutoCompleteBox
             lb = GetTemplateChild("lbChild") as ListBox;
             g = GetTemplateChild("spContainer") as Grid;
 
+            tb.FontSize = 30;
+            lb.FontSize = 30;
+
             if (tb == null || lb == null || g == null) return;
 
 

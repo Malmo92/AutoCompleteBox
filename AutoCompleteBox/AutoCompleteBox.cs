@@ -38,7 +38,18 @@ namespace AutoCompleteBox
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            set
+            {
+                var temp = value;
+                temp = temp.Replace('æ', 'e');
+                temp = temp.Replace('ø', 'o');
+                temp = temp.Replace('å', 'a');
+                temp = temp.Replace('Æ', 'E');
+                temp = temp.Replace('Ø', 'O');
+                temp = temp.Replace('Å', 'A');
+                SetValue(TextProperty, temp);
+                
+            }
         }
 
         public string WatermarkText
@@ -73,6 +84,7 @@ namespace AutoCompleteBox
 
             tb.FontSize = 30;
             lb.FontSize = 30;
+            lb.Height = 200;
 
             if (tb == null || lb == null || g == null) return;
 
@@ -103,6 +115,7 @@ namespace AutoCompleteBox
                 {
                     lb.ItemsSource = sel;
                     lb.Visibility = Visibility.Visible;
+                    
                     lb.SelectionChanged += lb_SelectionChanged;
                 }
             });
